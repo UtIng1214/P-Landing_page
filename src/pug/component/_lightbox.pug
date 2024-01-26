@@ -1,0 +1,208 @@
+//- 說明會more
+#seminar-info.lightbox
+  .wrap__inner
+    .lightbox__content
+      .lightbox__box.lightbox__box-more
+        a.lightbox__btn-close(href='javascript:;' title='關閉')
+        .lightbox__recruit__outer
+          h4.seminar-title 校園博覽會​
+          .lightbox__table
+            .lightbox__table__thead
+              .lightbox__table__td
+                p 場次​;
+              .lightbox__table__td
+                p 日期​;
+              .lightbox__table__td
+                p 時間;
+            .lightbox__table__tr
+              .lightbox__table__td
+                p 臺灣大學 椰林大道​
+              .lightbox__table__td
+                p 2024/3/2 (六)​
+              .lightbox__table__td
+                p 9:30-16:30​
+            .lightbox__table__tr
+              .lightbox__table__td
+                p 陽明交通大學​
+              .lightbox__table__td
+                p 2024/3/9 (六)​
+              .lightbox__table__td
+                p 10:00 -16:00​
+            .lightbox__table__tr
+              .lightbox__table__td
+                p 成功大學 光復校區​
+              .lightbox__table__td
+                p 2024/3/10 (日)​
+              .lightbox__table__td
+                p 10:00 -15:00​
+            .lightbox__table__tr
+              .lightbox__table__td
+                p 政治大學 山下校區​
+              .lightbox__table__td
+                p 2024/3/29 (五)
+              .lightbox__table__td
+                p 10:00-17:00
+          h4.seminar-title 徵才說明會​
+          .lightbox__table
+            .lightbox__table__thead.fs-25
+              .lightbox__table__td
+                p 場次​;
+              .lightbox__table__td
+                p 日期​;
+              .lightbox__table__td
+                p 時間;
+            .lightbox__table__tr
+              .lightbox__table__td
+                p 永豐銀行  中崙大樓​
+              .lightbox__table__td
+                p 2024/3/1 (五)​
+              .lightbox__table__td
+                p 14:00-17:00​
+            .lightbox__table__tr
+              .lightbox__table__td
+                p 政治大學  玉山國際會議廳​
+              .lightbox__table__td
+                p 2024/3/4 (一)​
+              .lightbox__table__td
+                p 12:10-13:00
+            .lightbox__table__tr
+              .lightbox__table__td
+                p 中央大學  國鼎光電大樓國際會議廳​
+              .lightbox__table__td
+                p 2024/3/4 (一)​
+              .lightbox__table__td
+                p 12:10-13:00
+            .lightbox__table__tr
+              .lightbox__table__td
+                p 臺灣大學  蘇格拉底廳​
+              .lightbox__table__td
+                p 2024/3/5 (二)​​
+              .lightbox__table__td
+                p 19:10-20:10​
+            .lightbox__table__tr
+              .lightbox__table__td
+                p 中山大學​
+              .lightbox__table__td
+                p 2024/3/6 (三)​
+              .lightbox__table__td
+                p 12:30-13:30​
+            .lightbox__table__tr
+              .lightbox__table__td
+                p 清華大學​
+              .lightbox__table__td
+                p 2024/3/7 (四)
+              .lightbox__table__td
+                p 13:20-14:10​
+            .lightbox__table__tr
+              .lightbox__table__td
+                p 中正大學​
+              .lightbox__table__td
+                p 2024/3/11 (一)
+              .lightbox__table__td
+                p 12:10-13:00​
+            .lightbox__table__tr
+              .lightbox__table__td
+                p 陽明交通大學  交大校區綜合一館​
+              .lightbox__table__td
+                p 2024/3/12 (二)​
+              .lightbox__table__td
+                p 14:20-15:10​
+            .lightbox__table__tr
+              .lightbox__table__td
+                p 台灣科技大學  國際大樓三樓IB​
+              .lightbox__table__td
+                p 2024/3/13 (三)
+              .lightbox__table__td
+                p 13:20-14:10​
+            .lightbox__table__tr
+              .lightbox__table__td
+                p 成功大學
+              .lightbox__table__td
+                p 待公告​
+              .lightbox__table__td
+                p 14:00-17:00​
+            .lightbox__table__tr
+              .lightbox__table__td
+                p 中興大學​
+              .lightbox__table__td
+                p 待公告​
+              .lightbox__table__td
+                p 12:10-13:00​
+
+
+//- 計畫說明MA
+//- --- template
+mixin maCard(datas)
+  each data in datas
+    div(id="MA-" + data.order).lightbox
+      .plans-content
+        .plans-content__top.MA-bg
+          h3.plans-content__top-title!=data.group
+          span.lightbox__btn-close-white(href='javascript:;' title='關閉')
+        .plans-content__short
+          .plans-content__short-hashtag
+            span!= '#' + data.hashtag1
+            span!= '#' + data.hashtag2
+            span!= '#' + data.hashtag3
+          .plans-content__short-text
+            p!=data.intro
+        .plans-content__line
+        .plans-introduce
+          .pic
+            img.img(src='images/img-MA-person-' + data.order + '.png' alt='')
+          .text
+            span!=data.session
+            h3!=data.nameTw + ' ' + data.nameEn
+            .school!=data.school
+        .detail
+          p!=data.share
+
++maCard(ma_data)
+
+//- 計畫說明PA
+//- --- template
+mixin paCard(datas)
+  each data in datas
+    div(id="PA-" + data.order).lightbox
+      .plans-content
+        .plans-content__top.PA-bg
+          h3.plans-content__top-title!=data.group
+          span.lightbox__btn-close-white(href='javascript:;' title='關閉')
+        .plans-content__short
+          .plans-content__short-hashtag
+            span!= '#' + data.hashtag1
+            span!= '#' + data.hashtag2
+            span!= '#' + data.hashtag3
+          .plans-content__short-text
+            p!=data.intro
+        .plans-content__line
+        .plans-introduce
+          .pic
+            img.img(src='images/img-PA-person-' + data.order + '.png' alt='')
+          .text
+            span!=data.session
+            h3!=data.nameTw + ' ' + data.nameEn
+            .school!=data.school
+        .detail
+          p!=data.share
+
++paCard(pa_data)
+
+//- 學長姐經驗分享
+//- --- template
+mixin shareCard(datas)
+  each data in datas
+    div(id='knowledge-popup' + data.order).lightbox
+      .modal-content
+        span.lightbox__btn-close(href='javascript:;' title='關閉')
+        .introduce
+          .pic
+            img(src='images/img-experience-person-' + data.order + '.png' alt='')
+          .text
+            span!=data.session
+            h3!=data.nameTw + ' ' + data.nameEn
+            .school!=data.school
+        .detail
+          p!=data.share
+
++shareCard(exp_data)

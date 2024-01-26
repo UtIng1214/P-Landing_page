@@ -1,0 +1,65 @@
+// 警語
+// ---------------------------------
+.section-notice {
+  background-color: $color-brown-dark;
+  color: $white;
+
+  .notice-title {
+    border-bottom: none;
+    @include flex-center;
+    transition: transform 0.6s $cubic;
+    &::after {
+      content: "\e145";
+      font-family: "Material Icons Outlined";
+      margin-left: 6px;
+    }
+  }
+
+  .notice-container {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+
+    .notice-list {
+      padding-bottom: 60px;
+
+      ul.inner {
+        padding-bottom: 0px;
+      }
+
+      li {
+        list-style: decimal;
+        line-height: 2;
+        font-size: px-em(18);
+        margin-left: 26px;
+        padding-left: 0;
+        text-align: justify;
+      }
+    }
+  }
+  // web-1920
+
+  // web中版-1420
+  @include breakpoint(xl) {
+  }
+  // 行動裝置大版Pad-1024
+  @include breakpoint(md) {
+  }
+  // 小網-768
+  @include breakpoint(sm) {
+    .notice-container {
+      .notice-list {
+        padding-top: 0px;
+        li {
+          font-size: px-em(16);
+        }
+      }
+    }
+  }
+}
+
+.toggle--active {
+  .notice-title::after {
+    content: "\e15b";
+    font-family: "Material Icons Outlined";
+  }
+}

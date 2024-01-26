@@ -1,0 +1,32 @@
+extends _layout.pug
+
+append vars
+
+block content
+  //- section.sketch(style='margin-top:-3995px')
+    picture
+      source(media='(max-width:768px)' srcset='images/OK_小版.png')
+      img(src='images/OK_首頁 .png' alt="")
+  main.index
+    //- KV
+    +section-kv()
+    //- body1
+    +section-body1()
+    //- body2
+    +section-body2()
+    //- body3
+    +section-body3()
+    //- body4
+    +section-body4()
+    //- body5
+    +section-body5()
+    //- 常見問題
+    +section-faq()
+    //- 聯絡我們
+    //- +section-connection()
+
+
+    +section-notice()
+
+append lightbox
+  include component/_lightbox.pug

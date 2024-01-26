@@ -1,0 +1,94 @@
+footer {
+  width: 100%;
+  background-color: #234481;
+  .footer-content {
+    padding: 15px 0;
+    @include breakpoint(sm) {
+      padding: vwm(40px) vwm(24px);
+    }
+  }
+  p {
+    // padding: 15px 0;
+    letter-spacing: 0.03em;
+    line-height: 3;
+    color: #fff;
+    font-size: px-em(16);
+    line-height: px-em(24, 16);
+    text-align: center;
+    margin: 0 auto;
+    @include breakpoint(sm) {
+      font-size: vwm(34px);
+      line-height: vwm(44px);
+      word-break: none;
+      span {
+        white-space: nowrap;
+      }
+    }
+  }
+  .copyright-logo-text {
+    display: inline-flex;
+    align-items: center;
+    .sinopac-icon {
+      margin: 0 10px;
+      @include size(22px, 22px);
+      @include breakpoint(sm) {
+        width: vwm(22px);
+        margin: 0 vwm(10px);
+      }
+    }
+  }
+}
+
+// 浮動按鈕
+.fixedIcon {
+  &__area {
+    background: $orange-500;
+    border-radius: 50%;
+    display: flex;
+    position: fixed;
+    bottom: 10%;
+    right: clamp(24px, 5vw, 10%);
+    transition: transform 0.2s;
+    @include size(160px, 160px);
+    @include flex-center;
+    z-index: 7;
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    @include breakpoint(sm) {
+      border-radius: 0;
+      position: relative;
+      right: 0;
+      width: 100%;
+      height: vwm(160px);
+    }
+    a {
+      color: $white;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.5;
+      @include flex-center;
+      @include breakpoint(sm) {
+        flex-direction: row;
+      }
+      img {
+        margin: px-em(5);
+        @include size(65px, 73px);
+        @include breakpoint(sm) {
+          margin-right: vwm(16px);
+          @include size(vwm(58px), vwm(75px));
+        }
+      }
+      span {
+        font-size: 22px;
+        font-weight: bold;
+        max-width: 6em;
+        @include breakpoint(sm) {
+          font-size: clamp(36px, vwm(54px), 54px);
+          max-width: 100%;
+        }
+      }
+    }
+  }
+}

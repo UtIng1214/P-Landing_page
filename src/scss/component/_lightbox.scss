@@ -1,0 +1,412 @@
+.lightbox {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  overflow-x: hidden;
+  background-color: $bg-popup;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s $cubic;
+  z-index: $z-lightbox;
+  visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &--active {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+  }
+
+  &__content {
+    margin-top: clamp(40px, 12.5vh, 80px);
+    @include breakpoint(sm) {
+      // margin-top: auto;
+    }
+    ol {
+      li {
+        ol {
+          li {
+            list-style: none;
+          }
+        }
+      }
+      & > li {
+        list-style: decimal;
+      }
+    }
+  }
+
+  &__box {
+    position: relative;
+    max-width: 991px;
+    transition: transform 0.2s ease-out;
+    margin: 10px auto;
+    background: $white;
+    padding: px-em(30) px-em(60);
+    border-radius: px-em(32);
+    max-height: 120vh;
+    &-more {
+      max-height: 875px;
+      @include breakpoint(sm) {
+        max-height: vwm(750px);
+      }
+    }
+
+    @include breakpoint(sm) {
+      max-width: 95%;
+    }
+
+    @include breakpoint(sm) {
+      max-height: 80vh;
+      padding: vwm(20px) vwm(40px);
+    }
+
+    // &::-webkit-scrollbar {
+    //   width: 4px;
+    //   background-color: $gray-400;
+    // }
+
+    // 迷你尺寸
+    // .lightbox--sm & {
+    //   max-width: $lightbox-size-sm;
+    // }
+
+    // .lightbox--m & {
+    //   max-width: $lightbox-size-m;
+    // }
+
+    // .lightbox--active & {
+    //   animation: fadeInDown 0.35s;
+    // }
+  }
+
+  &__btn-close {
+    background: url("../images/icon-close.svg") no-repeat;
+    display: block;
+    position: absolute;
+    top: $gap-base-unit * 8;
+    right: $gap-base-unit * 8;
+    @include size(36px);
+    padding: 5px;
+    line-height: 1;
+    z-index: 1;
+    @include breakpoint(sm) {
+      right: $gap-base-unit * 6;
+      @include size(28px);
+    }
+  }
+
+  &__btn-close-white {
+    background: url("../images/icon-close-white.svg") no-repeat;
+    display: block;
+    position: absolute;
+    top: $gap-base-unit * 8;
+    right: $gap-base-unit * 8;
+    @include size(36px);
+    padding: 5px;
+    line-height: 1;
+    z-index: 1;
+    @include breakpoint(sm) {
+      // top: $gap-base-unit * 6;
+      right: $gap-base-unit * 6;
+      @include size(28px);
+    }
+  }
+
+  &__head {
+    color: $color-brown-mid;
+    font-size: clamp(24px, 5vw, 50px);
+    font-family: $font-family;
+    line-height: (25/20);
+    font-weight: $bold;
+    text-align: center;
+    padding-bottom: $gap-base-unit * 5;
+    padding-right: $gap-base-unit * 7;
+
+    @include breakpoint(sm) {
+      // font-size: px-em(32);
+    }
+
+    @include breakpoint(xs) {
+      // padding-right: 50px;
+    }
+  }
+
+  &__body {
+    color: $gray-400;
+    line-height: 1.75;
+    .fc-reminder {
+      color: #e7231d;
+    }
+  }
+}
+
+// Lightbox 客製
+.lightbox {
+  .container {
+    height: 100%;
+    .lightbox__content {
+      height: 100%;
+    }
+  }
+  .lightbox__box {
+    border-radius: px-em(30, 20);
+    display: block;
+
+    @include breakpoint(sm) {
+      position: absolute;
+      // min-height: 80vh;
+      top: 10vh;
+      right: clamp(16px, 5vw, 80px);
+      left: clamp(16px, 5vw, 80px);
+      bottom: 10vh;
+    }
+
+    .lightbox__body {
+      @include breakpoint(sm) {
+        position: absolute;
+        top: 100px;
+        left: clamp(16px, 5vw, 80px);
+        right: clamp(16px, 5vw, 80px);
+        bottom: clamp(16px, 5vw, 60px);
+        overflow-y: auto;
+      }
+      @include breakpoint(xs) {
+        font-size: 14px;
+      }
+    }
+  }
+  // -----校園博覽會-------
+  .seminar-title {
+    text-align: center;
+    font-size: 26px;
+    font-weight: bold;
+    color: $orange-700;
+    margin-top: 60px;
+    padding: 15px;
+    background-color: #efeeee;
+    @include breakpoint(sm) {
+      margin-top: vwm(20px);
+    }
+  }
+  &.active {
+    display: block;
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  &__outer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 1200px;
+    background: #fff;
+    overflow: auto;
+    padding: 6.5% 0px;
+    @include breakpoint(md) {
+      overflow: auto;
+      padding-top: 40px;
+    }
+  }
+
+  &__inner {
+    max-width: 800px;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+
+    h4 {
+      color: $orange-700;
+      background: #efeeee;
+      padding: 2px 0;
+    }
+
+    p {
+      color: #efeeee;
+    }
+  }
+
+  &__table {
+    color: $gray-300;
+    display: table;
+    width: 100%;
+    table-layout: fixed; /* 使用 fixed 属性 */
+    border-collapse: collapse;
+    text-align: center;
+    &__thead,
+    &__tr {
+      display: table-row;
+    }
+
+    &__thead {
+      .lightbox__table__td {
+        border-bottom: 2px solid $orange-700;
+      }
+    }
+
+    &__tr {
+      &:nth-child(even) {
+        background: #feefe9;
+      }
+
+      &:last-child {
+        .lightbox__table__td {
+          border-bottom: 2px solid $orange-700;
+        }
+      }
+    }
+
+    &__td {
+      display: table-cell;
+      padding: 15px 0px;
+      border-bottom: 1px solid $orange-700;
+      @include breakpoint(sm) {
+        font-size: clamp(12px, 3vw, 16px);
+      }
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: 10px;
+    right: 0px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+
+    @include breakpoint(md) {
+      top: 0;
+    }
+
+    &:before,
+    &::after {
+      content: "";
+      background: #efeeee;
+      width: 40px;
+      height: 1px;
+      display: block;
+      position: absolute;
+      top: 50%;
+
+      @include breakpoint(md) {
+        width: 25px;
+        left: 50%;
+      }
+    }
+
+    &:before {
+      transform: rotate(45deg) translateY(-50%);
+
+      @include breakpoint(md) {
+        transform: rotate(45deg) translate(-50%, -50%);
+      }
+    }
+
+    &::after {
+      transform: rotate(-45deg) translateY(-50%);
+
+      @include breakpoint(md) {
+        top: 15%;
+        transform: rotate(-45deg) translateX(-50%);
+      }
+    }
+  }
+
+  &__recruit {
+    display: none;
+
+    &.active {
+      display: block;
+    }
+
+    &__outer {
+      max-height: 815px;
+      overflow-y: scroll;
+      padding-right: 2px;
+      &::-webkit-scrollbar {
+        -webkit-appearance: none;
+        width: 4px;
+      }
+      &::-webkit-scrollbar-thumb {
+        border-radius: 4px;
+        background-color: rgba(218, 87, 42, 0.6);
+        opacity: 0.7;
+        // margin-left: 2px;
+        // background-color: pink;
+      }
+      @include breakpoint(sm) {
+        max-height: 95%;
+      }
+      &:nth-child(2) {
+        // margin-top: 5%;
+      }
+      > p {
+        text-align: left;
+        margin-top: 15px;
+      }
+    }
+  }
+
+  &__share {
+    display: none;
+
+    &.active {
+      display: block;
+    }
+
+    &__inner {
+      display: none;
+
+      &.active {
+        display: block;
+      }
+    }
+
+    &__file {
+      display: flex;
+      align-items: center;
+
+      img {
+        // max-width: 370px
+        // width: 31.25%
+        width: 250px;
+
+        @include breakpoint(md) {
+          width: 40%;
+        }
+      }
+    }
+
+    &__name {
+      margin-left: 14%;
+
+      h5 {
+        letter-spacing: 0.2rem;
+      }
+    }
+
+    &__text {
+      margin-top: 6%;
+
+      p {
+        text-align: justify;
+        line-height: 1.8;
+
+        @include breakpoint(md) {
+          line-height: 1.4;
+        }
+      }
+    }
+  }
+}

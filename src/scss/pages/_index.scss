@@ -1,0 +1,142 @@
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 3em;
+}
+// @supports (scrollbar-gutter: stable) {
+//   html {
+//     scrollbar-gutter: stable;
+//   }
+// }
+body {
+  height: 100%;
+}
+
+// 對照設計稿
+// ---------------------------------
+.sketch {
+  width: 100%;
+  opacity: 0.2;
+  position: absolute;
+  // top: 40px;
+  z-index: 5;
+}
+
+// 共用
+// ---------------------------------
+.section {
+  position: relative;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  &.section-news {
+    padding-bottom: 0;
+  }
+  &-title {
+    font-size: px-em(50);
+    font-weight: bold;
+    font-family: $custom-font-cht;
+    text-align: center;
+    color: $black;
+    padding: 0 px-em(10, 50) px-em(16, 50);
+    position: relative;
+    min-width: 220px;
+    display: inline-block;
+    &:after {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      height: px-em(4, 50);
+      background-color: $secondary-orange;
+    }
+  }
+  &-subtitle {
+    font-size: px-em(30);
+    line-height: px-em(40, 30);
+    letter-spacing: 0.03em;
+    color: $gray-400;
+  }
+
+  &-kv {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  // 背景
+  &.bg-yellow {
+    background: $bg-yellow;
+  }
+  &.bg-white {
+    background: $white;
+    height: 800px;
+  }
+
+  @include breakpoint(sm) {
+    padding-top: vwm(60px);
+    padding-bottom: vwm(35px);
+    &-title {
+      font-size: vwm(50px);
+      padding: 0 vwm(10px) vwm(16px);
+      min-width: vwm(220px);
+      &:after {
+        height: vwm(4px);
+      }
+    }
+    &-subtitle {
+      .section-title + & {
+        margin-top: vwm(24px);
+      }
+      font-size: vwm(38px);
+      line-height: vwm(44px);
+      letter-spacing: -0.1em;
+      .ls-reset {
+        letter-spacing: normal;
+      }
+    }
+    &-kv {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+  }
+}
+
+// 共用按鈕
+.btn-round {
+  background: $btn-round-fill;
+  border: 3px solid $btn-round-stroke;
+  border-radius: 40px;
+  color: $white;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 30px;
+  font-family: $font-family;
+  font-weight: bold;
+  padding: 0.5em 1em;
+  transition:
+    background 0.3s linear,
+    transform 0.1s linear;
+  @include breakpoint(sm) {
+    font-size: clamp(18px, calc(1vw + 1rem), 30px);
+  }
+
+  &:hover {
+    background-color: $color-brown-mid;
+    transform: scale(1.05);
+  }
+
+  &.active {
+    background: $white;
+    color: $btn-round-fill;
+  }
+}
+
+.table__con {
+  color: #fff;
+  display: none;
+
+  &.active {
+    display: block;
+  }
+}

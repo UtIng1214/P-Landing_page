@@ -1,0 +1,177 @@
+.section-faq {
+  // web-1920
+  color: #040000;
+  position: relative;
+  h2.section-title {
+    margin-bottom: 60px;
+    font-family: $custom-font-en;
+  }
+  h3 {
+    font-family: $custom-font-en;
+  }
+  span {
+    margin-right: px-em(20, 24);
+  }
+  .faq-toggle {
+    background-color: $white;
+    border: 1px solid $brown;
+    color: $brown;
+    line-height: 1.5;
+    font-weight: $bold;
+    border-radius: 10px;
+    transition:
+      background-color 0.25s $cubic,
+      opacity 0.25s $cubic;
+    margin-bottom: $gap-base-unit * 5;
+
+    &__design {
+      position: relative;
+      // max-width: 1060px;
+      margin-left: auto;
+      margin-right: auto;
+      &-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: url("../images/img-faq-design.svg") no-repeat;
+        @include size(56.5px, 50px);
+      }
+    }
+
+    @include active-hover {
+      opacity: 0.8;
+    }
+
+    &.toggle--active {
+      background-color: $white;
+      color: $black;
+      @include active-hover {
+        opacity: 1;
+      }
+
+      .faq-toggle__trigger {
+        padding-bottom: 16px;
+      }
+    }
+
+    &__trigger {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: $gap-base-unit * 6 $gap-base-unit * 8;
+      padding-left: 50px;
+      p {
+        display: flex;
+        font-weight: 900;
+        font-size: px-em(24);
+      }
+      span {
+        display: flex;
+        flex: 1 0 auto;
+      }
+
+      .toggle--active & {
+        color: $brown;
+      }
+
+      &:hover {
+        opacity: 1;
+      }
+
+      &-icon {
+        flex-shrink: 0;
+        font-size: 1.4em;
+        margin-left: $gap-base-unit * 4;
+        transform: rotate(-90deg);
+      }
+    }
+
+    &__content {
+      font-size: px-em(20);
+      font-family: $custom-font-en;
+      padding-right: $gap-base-unit * 8;
+      padding-left: $gap-base-unit * 25;
+      font-weight: normal;
+      opacity: 0;
+      word-break: break-word;
+      transition:
+        max-height 0.15s $cubic,
+        opacity 0.1s $cubic,
+        padding 0.15s $cubic;
+      line-height: 1.5;
+      p {
+        position: relative;
+      }
+      &::before {
+        content: "";
+        display: block;
+        background-color: $brown;
+        width: 100%;
+        height: 1px;
+        margin-bottom: 20px;
+      }
+      .toggle--active & {
+        padding-bottom: $gap-base-unit * 6;
+        opacity: 1;
+        transition-delay: 0, 0.05s, 0;
+        transition-duration: 0.3s, 0.25s, 0.3s;
+      }
+    }
+  }
+
+  // web中版-1420
+  @include breakpoint(xl) {
+    .faq-toggle {
+      &__design {
+        width: vwpc(1600px);
+      }
+    }
+  }
+  // 行動裝置大版Pad-1024
+  @include breakpoint(md) {
+  }
+  // 小網-768
+  @include breakpoint(sm) {
+    h2.section-title {
+      margin-bottom: vwm(66px);
+    }
+    h3 {
+      font-size: vwm(34px);
+    }
+    span {
+      margin-right: vwm(20px);
+    }
+    .faq-toggle {
+      &__design {
+        width: vwm(690px);
+        &-img {
+          width: vwm(56.5px);
+          height: vwm(50px);
+        }
+      }
+      &.toggle--active {
+        .faq_toggle__content {
+          padding: 0 vwm(45px) vwm(28px) vwm(70px);
+        }
+      }
+      &__trigger {
+        padding: $gap-base-unit * 4;
+        padding-left: vwm(30px);
+        p {
+          font-size: vwm(34px);
+        }
+      }
+      &__content {
+        font-size: vwm(34px);
+        &::before {
+          width: calc(100% + #{vwm(40px)});
+          margin-left: vwm(-20px);
+        }
+        .toggle--active & {
+          font-size: vwm(34px);
+          padding: 0 vwm(45px) vwm(28px) vwm(90px);
+        }
+      }
+    }
+  }
+}
